@@ -7,6 +7,9 @@
 namespace Lunaris {
 namespace MultiMap {
 
+    /**
+     * @brief Like std::tuple, but with extras for direct per-type comparison and assigning.
+     */
     template<typename... Ts>
     struct fancy_tuple : std::tuple<base_cast<Ts>...> {
         using base_type = std::tuple<base_cast<Ts>...>;

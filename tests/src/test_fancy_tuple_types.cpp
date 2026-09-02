@@ -21,6 +21,13 @@ int main() {
     if (yay == std::string("hello")) std::cout << "STR OK\n";
     else return 5;
 
+    int yayint = yay;
+    if (yayint == 1) std::cout << "INT2 OK\n";
+    else return -1;
+    const int& yayref = yay;
+    if (yayref == 1) std::cout << "INT3 OK\n";
+    else return -2;
+
     yay = 10;
     yay = 'z';
     yay = 25L;
@@ -29,6 +36,13 @@ int main() {
 
     if (yay == 10) std::cout << "INT OK\n";
     else return 6;
+    
+    yayint = yay;
+    if (yayint == 10) std::cout << "INT2 OK\n";
+    else return -3;
+    if (yayref == 10) std::cout << "INT3 OK\n";
+    else return -4;
+
     if (yay == 'z') std::cout << "CHAR OK\n";
     else return 7;
     if (yay == 25L) std::cout << "LONG OK\n";

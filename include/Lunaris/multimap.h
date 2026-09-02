@@ -4,3 +4,4 @@
 
 #include <Lunaris/MultiMap/base_type.h>
 #include <Lunaris/MultiMap/fancy_tuple.h>
+#include <Lunaris/MultiMap/multi_map.h>

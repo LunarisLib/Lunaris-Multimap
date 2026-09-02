@@ -43,5 +43,12 @@ namespace MultiMap {
         return matched_and_equal;
     }
 
+    template<typename ...Ts>
+    template<typename U>
+    bool fancy_tuple<Ts...>::operator!=(const U& val) const requires(contains_type_v<U>) {
+        return !this->operator==(val);
+    }
+        
+
 } // namespace MultiMap
 } // namespace Lunaris

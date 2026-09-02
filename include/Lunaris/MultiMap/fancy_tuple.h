@@ -22,6 +22,28 @@ namespace MultiMap {
         template<typename U>
         bool operator==(const U& val) const
         requires(contains_type_v<U>);
+        template<typename U>
+        
+        bool operator!=(const U& val) const
+        requires(contains_type_v<U>);
+
+        template <typename V>
+        constexpr operator V&() & noexcept
+        requires (((std::same_as<V, Ts> ? 1 : 0) + ...) == 1) {
+            return std::get<V>(*this);
+        }
+
+        template <typename V>
+        constexpr operator const V&() const & noexcept
+        requires (((std::same_as<V, Ts> ? 1 : 0) + ...) == 1) {
+            return std::get<V>(*this);
+        }
+
+        template <typename V>
+        constexpr operator V() && noexcept
+        requires (((std::same_as<V, Ts> ? 1 : 0) + ...) == 1) {
+            return std::get<V>(std::move(*this));
+        }
     };
 
 } // namespace MultiMap

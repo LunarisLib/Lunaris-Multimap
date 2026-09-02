@@ -1,29 +1,11 @@
 #pragma once
 
-#include <stdexcept>
 #include <tuple>
-//#include <string>
-//#include <type_traits>
-//#include <iostream>
+
+#include <Lunaris/MultiMap/base_type.h>
 
 namespace Lunaris {
 namespace MultiMap {
-
-    template<typename T> 
-    using true_base_cast = std::remove_cv_t<
-        std::remove_all_extents_t<
-            std::remove_pointer_t<
-                std::remove_reference_t<T>
-            >
-        >
-    >;
-    template<typename T>
-    using base_cast = std::conditional_t<
-        std::is_pointer<std::remove_reference_t<T>>::value||std::is_array<std::remove_reference_t<T>>::value,
-        std::add_pointer_t<true_base_cast<T>>,
-        true_base_cast<T>
-    >;
-
 
     template<typename... Ts>
     struct fancy_tuple : std::tuple<base_cast<Ts>...> {
@@ -42,8 +24,7 @@ namespace MultiMap {
         requires(contains_type_v<U>);
     };
 
-
 } // namespace MultiMap
 } // namespace Lunaris
 
-#include <Lunaris/MultiMap/impl/multimap.ipp>
+#include <Lunaris/MultiMap/impl/fancy_tuple.ipp>

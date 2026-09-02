@@ -2,4 +2,5 @@
 
 #include <Lunaris/MultiMap/exception.h>
 
-#include <Lunaris/MultiMap/multimap.h>
+#include <Lunaris/MultiMap/base_type.h>
+#include <Lunaris/MultiMap/fancy_tuple.h>
